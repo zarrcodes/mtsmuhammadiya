@@ -39,7 +39,9 @@
         .hamburger { display: none; cursor: pointer; border: none; background: transparent; font-size: 24px; color: var(--biru-muh); }
 
         /* === PAGE HEADER === */
-        .page-header { background: linear-gradient(rgba(0, 86, 179, 0.85), rgba(0, 61, 130, 0.95)), url('assets/sampul.jpg') center/cover; padding: 80px 20px; text-align: center; color: var(--putih); }
+        .page-header { background: linear-gradient(rgba(0, 86, 179, 0.85), rgba(0, 61, 130, 0.95)), url('assets/sampul.png') center/cover; padding: 80px 20px; text-align: center; color: var(--putih);
+           background-position: center 60%;
+        }
         .page-header h1 { color: var(--putih); font-size: 2.5rem; margin-bottom: 10px; font-weight: 800; }
         .breadcrumb { font-size: 0.9rem; opacity: 0.8; font-weight: 500; }
         .breadcrumb a { color: var(--putih); text-decoration: underline; }
@@ -88,10 +90,11 @@
 </head>
 <body>
 
+       <!-- NAV BAR -->
     <header>
         <div class="nav-container">
             <a href="index.html" class="logo-area">
-                <img src="assets/logo.png" alt="Logo MTs Muhammadiyah Martapura">
+                <img src="assets/logo.png" alt="Logo MTs Muhammadiyah">
                 <div class="logo-text">
                     MTs Muhammadiyah
                     <span>Martapura</span>
@@ -101,22 +104,22 @@
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html">Beranda</a></li>
                 <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle">Profil ▾</a>
+                    <a href="#" class="dropdown-toggle">Profil ▾</a>
                     <div class="dropdown-content">
                         <a href="visi-misi.html">Visi dan Misi</a>
-                        <a href="#">Data Siswa</a>
+                        <a href="data-siswa.html">Data Siswa</a>
                         <a href="#">Tujuan</a>
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle">PPDB ▾</a>
+                    <a href="#" class="dropdown-toggle">PPDB ▾</a>
                     <div class="dropdown-content">
                         <a href="#">Pendaftaran Online</a>
                         <a href="#">Pendaftaran Offline</a>
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle">Tenaga Pendidik ▾</a>
+                    <a href="#" class="dropdown-toggle">Tenaga Pendidik ▾</a>
                     <div class="dropdown-content">
                         <a href="#">Struktur Organisasi</a>
                         <a href="#">Pendidik</a>
@@ -124,16 +127,20 @@
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle">Sarana Prasarana ▾</a>
+                    <a href="#" class="dropdown-toggle">Sarana Prasarana ▾</a>
                     <div class="dropdown-content">
                         <a href="#">Ruang Kelas</a>
                         <a href="#">Perpustakaan</a>
-                        <a href="#">Laboratorium</a>
-                        <a href="#">Fasilitas Olahraga</a>
+                        <a href="#">Lab Komputer</a>
+                        <a href="#">Lab IPA</a>
+                        <a href="#">UKS</a>
+                         <a href="#">Kantor</a>
+                          <a href="#">Aula</a>
+                        
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle">Ekstrakurikuler ▾</a>
+                    <a href="#" class="dropdown-toggle">Ekstrakurikuler ▾</a>
                     <div class="dropdown-content">
                         <a href="#">Hizbul Wathan (HW)</a>
                         <a href="#">Tapak Suci</a>
@@ -142,7 +149,7 @@
                         <a href="#">Kesenian</a>
                     </div>
                 </li>
-                <li><a href="#">Tentang Kami</a></li>
+                <li><a href="tentang-kami.html">Tentang Kami</a></li>
                 <li><a href="#">Artikel</a></li>
             </ul>
         </div>

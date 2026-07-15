@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MTs Muhammadiyah Martapura</title>
-    <!-- Font Google: Poppins untuk Heading, Inter untuk teks biasa -->
+    <title>Data Siswa - MTs Muhammadiyah Martapura</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         /* === VARIABEL WARNA & RESET === */
         :root {
-            --biru-muh: #0056b3; /* Biru Muhammadiyah */
+            --biru-muh: #0056b3;
             --biru-gelap: #003d82;
             --putih: #ffffff;
             --abu-terang: #f4f7f6;
@@ -22,59 +21,44 @@
         h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; color: var(--hitam-teks); }
         a { text-decoration: none; transition: all 0.3s ease; }
 
-        /* === NAV BAR ($300 Look) === */
+        /* === NAV BAR === */
         header { background-color: var(--putih); box-shadow: 0 4px 6px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
         .nav-container { max-width: 1200px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
-        
         .logo-area { display: flex; align-items: center; gap: 12px; }
         .logo-area img { width: 50px; height: 50px; object-fit: contain; }
         .logo-text { font-size: 1.2rem; font-weight: 800; color: var(--biru-muh); line-height: 1.2; text-transform: none; }
         .logo-text span { display: block; font-size: 0.8rem; color: var(--abu-teks); font-weight: 500; font-family: 'Inter', sans-serif; }
-
-        /* Menu Desktop */
         .nav-menu { display: flex; gap: 25px; list-style: none; align-items: center; }
         .nav-menu li { position: relative; }
         .nav-menu a { color: var(--hitam-teks); font-weight: 600; font-size: 0.9rem; padding: 10px 0; display: inline-block; }
         .nav-menu a:hover { color: var(--biru-muh); }
-
-        /* Dropdown Desktop */
         .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: var(--putih); min-width: 220px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; padding: 10px 0; z-index: 99; }
         .dropdown:hover .dropdown-content { display: block; }
         .dropdown-content a { color: var(--abu-teks); padding: 10px 20px; display: block; font-size: 0.85rem; font-weight: 500; }
         .dropdown-content a:hover { background-color: var(--abu-terang); color: var(--biru-muh); padding-left: 25px; }
-
-        /* Hamburger Menu (Mobile) */
         .hamburger { display: none; cursor: pointer; border: none; background: transparent; font-size: 24px; color: var(--biru-muh); }
 
-        /* === HERO SECTION (Banner Utama) === */
-        .hero { background: linear-gradient(rgba(0, 86, 179, 0.9), rgba(0, 61, 130, 0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80') center/cover; padding: 100px 20px; text-align: center; color: var(--putih); }
-        .hero h1 { color: var(--putih); font-size: 2.5rem; margin-bottom: 15px; font-weight: 800; }
-        .hero p { max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem; opacity: 0.9; }
-        .btn-utama { background-color: #ffb703; color: var(--hitam-teks); padding: 12px 30px; border-radius: 30px; font-weight: 700; font-family: 'Poppins', sans-serif; display: inline-block; border: 2px solid #ffb703; }
-        .btn-utama:hover { background-color: transparent; color: #ffb703; }
+        /* === PAGE HEADER === */
+        .page-header { background: linear-gradient(rgba(0, 86, 179, 0.85), rgba(0, 61, 130, 0.95)), url('assets/sampul.png') center/cover; padding: 80px 20px; text-align: center; color: var(--putih);
+           background-position: center 60%;
+        }
+        .page-header h1 { color: var(--putih); font-size: 2.5rem; margin-bottom: 10px; font-weight: 800; }
+        .breadcrumb { font-size: 0.9rem; opacity: 0.8; font-weight: 500; }
+        .breadcrumb a { color: var(--putih); text-decoration: underline; }
 
-        /* === SECTION TENTANG KAMI === */
-        .section-container { max-width: 1200px; margin: 60px auto; padding: 0 20px; }
-        .section-title { text-align: center; font-size: 2rem; color: var(--biru-muh); margin-bottom: 40px; text-transform: uppercase; }
+        /* === KONTEN DATA SISWA (ANIMASI COUNTER) === */
+        .content-container { max-width: 800px; margin: 80px auto; padding: 0 20px; text-align: center; }
         
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; background: var(--putih); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.03); }
-        .about-text p { margin-bottom: 20px; }
-        .about-img { width: 100%; border-radius: 12px; }
-
-        /* === SECTION ARTIKEL TERBARU === */
-        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .news-card { background: var(--putih); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.03); transition: transform 0.3s ease; }
-        .news-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
-        .news-img { width: 100%; height: 200px; object-fit: cover; }
-        .news-content { padding: 25px; }
-        .news-date { font-size: 0.8rem; color: var(--biru-muh); font-weight: 600; text-transform: uppercase; display: block; margin-bottom: 10px; }
-        .news-title { font-size: 1.2rem; margin-bottom: 15px; }
-        .news-desc { font-size: 0.9rem; margin-bottom: 20px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-        .read-more { color: var(--biru-muh); font-weight: 700; font-size: 0.9rem; }
-        .read-more:hover { text-decoration: underline; }
+        .counter-box { background-color: var(--putih); padding: 60px 40px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-top: 6px solid var(--biru-muh); display: inline-block; width: 100%; max-width: 500px; transition: transform 0.3s ease; }
+        .counter-box:hover { transform: translateY(-5px); }
+        
+        .icon-siswa { font-size: 60px; margin-bottom: 10px; }
+        .counter-number { font-size: 6rem; font-weight: 800; font-family: 'Poppins', sans-serif; color: var(--biru-muh); line-height: 1; margin-bottom: 15px; }
+        .counter-label { font-size: 1.5rem; font-weight: 600; color: var(--hitam-teks); text-transform: uppercase; letter-spacing: 2px; }
+        .counter-desc { font-size: 1rem; color: var(--abu-teks); margin-top: 15px; }
 
         /* === FOOTER === */
-        footer { background-color: var(--biru-gelap); color: var(--putih); padding: 60px 20px 20px; margin-top: 60px; }
+        footer { background-color: var(--biru-gelap); color: var(--putih); padding: 60px 20px 20px; margin-top: 80px; }
         .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
         .footer-col h3 { color: var(--putih); margin-bottom: 20px; font-size: 1.2rem; }
         .footer-col p { opacity: 0.8; font-size: 0.9rem; margin-bottom: 10px; }
@@ -89,13 +73,12 @@
             .nav-menu.active { left: 0; }
             .nav-menu li { width: 100%; }
             .nav-menu a { display: block; width: 100%; font-size: 1.1rem; border-bottom: 1px solid var(--abu-terang); padding: 15px 0; }
-            
-            /* Penyesuaian Dropdown di Mobile */
             .dropdown-content { position: static; box-shadow: none; display: none; padding-left: 20px; border-left: 2px solid var(--biru-muh); margin-top: 10px; }
             .dropdown.mobile-active .dropdown-content { display: block; }
             
-            .hero h1 { font-size: 2rem; }
-            .about-grid { grid-template-columns: 1fr; padding: 20px; }
+            .page-header h1 { font-size: 2rem; }
+            .counter-number { font-size: 4.5rem; }
+            .counter-box { padding: 40px 20px; }
         }
     </style>
 </head>
@@ -115,11 +98,11 @@
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html">Beranda</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">Profil ▾</a>
+                    <a href="#" class="dropdown-toggle" style="color: var(--biru-muh);">Profil ▾</a>
                     <div class="dropdown-content">
                         <a href="visi-misi.html">Visi dan Misi</a>
-                        <a href="data-siswa.html">Data Siswa</a>
-                        <a href="tujuan.html">Tujuan</a>
+                        <a href="data-siswa.html" style="color: var(--biru-muh); background-color: var(--abu-terang); padding-left: 25px;">Data Siswa</a>
+                        <a href="#">Tujuan</a>
                     </div>
                 </li>
                 <li class="dropdown">
@@ -140,9 +123,10 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle">Sarana Prasarana ▾</a>
                     <div class="dropdown-content">
-                        <a href="sarana-prasana">Sarana prasarana</a>
-                  
-                        
+                        <a href="#">Ruang Kelas</a>
+                        <a href="#">Perpustakaan</a>
+                        <a href="#">Laboratorium</a>
+                        <a href="#">Fasilitas Olahraga</a>
                     </div>
                 </li>
                 <li class="dropdown">
@@ -161,64 +145,24 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <h1>MTs Muhammadiyah Martapura</h1>
-        <p>Membentuk generasi Islami yang cerdas, mandiri, dan berprestasi melalui pendidikan berkualitas, lingkungan belajar yang nyaman, serta pembinaan karakter yang berakhlakul karimah.</p>
-        <a href="#" class="btn-utama">INFO PPDB 2026/2027</a>
-    </section>
-
-    <!-- TENTANG KAMI SECTION -->
-    <section class="section-container">
-        <h2 class="section-title">Sekilas tentang MTs Muhammadiyah Martapura</h2>
-        <div class="about-grid">
-            <div class="about-text">
-                <h3>Membentuk Karakter Islami Sejak Dini</h3>
-                <br>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <a href="#" class="read-more">Baca Sejarah Lengkap &rarr;</a>
-            </div>
-            <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80" alt="Gedung Sekolah" class="about-img">
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <h1>Data Siswa</h1>
+        <div class="breadcrumb">
+            <a href="index.html">Beranda</a> &nbsp;/&nbsp; Profil &nbsp;/&nbsp; Data Siswa
         </div>
-    </section>
+    </div>
 
-    <!-- ARTIKEL SECTION -->
-    <section class="section-container">
-        <h2 class="section-title">Berita & Informasi Terbaru</h2>
-        <div class="news-grid">
-            <!-- Berita 1 -->
-            <article class="news-card">
-                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Berita 1" class="news-img">
-                <div class="news-content">
-                    <span class="news-date">15 Juli 2026</span>
-                    <h3 class="news-title">Lorem Ipsum Dolor Sit Amet Consectetur</h3>
-                    <p class="news-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel urna a justo tempor efficitur.</p>
-                    <a href="#" class="read-more">Baca Selengkapnya &rarr;</a>
-                </div>
-            </article>
-            <!-- Berita 2 -->
-            <article class="news-card">
-                <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=600&q=80" alt="Berita 2" class="news-img">
-                <div class="news-content">
-                    <span class="news-date">12 Juli 2026</span>
-                    <h3 class="news-title">Adipiscing Elit Sed Do Eiusmod Tempor</h3>
-                    <p class="news-desc">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit.</p>
-                    <a href="#" class="read-more">Baca Selengkapnya &rarr;</a>
-                </div>
-            </article>
-            <!-- Berita 3 -->
-            <article class="news-card">
-                <img src="https://images.unsplash.com/photo-1546410531-ea4cea38ce13?auto=format&fit=crop&w=600&q=80" alt="Berita 3" class="news-img">
-                <div class="news-content">
-                    <span class="news-date">10 Juli 2026</span>
-                    <h3 class="news-title">Incididunt Ut Labore Et Dolore Magna Aliqua</h3>
-                    <p class="news-desc">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus.</p>
-                    <a href="#" class="read-more">Baca Selengkapnya &rarr;</a>
-                </div>
-            </article>
+    <!-- KONTEN UTAMA: COUNTER ANIMATION -->
+    <main class="content-container">
+        <div class="counter-box">
+            <div class="icon-siswa"></div>
+            <!-- Angka diset 0 dulu di HTML, JS yang akan mengubahnya sampai ke target (data-target="74") -->
+            <div class="counter-number" data-target="78" id="jumlah-siswa">0</div>
+            <div class="counter-label">Siswa Aktif</div>
+            <p class="counter-desc">Total keseluruhan peserta didik MTs Muhammadiyah Martapura Tahun Ajaran 2026/2027.</p>
         </div>
-    </section>
+    </main>
 
     <!-- FOOTER -->
     <footer>
@@ -243,13 +187,36 @@
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2026 MTs Muhammadiyah Martapura. Website ini dibuat oleh Abdurrazzaq M. Ibrahim
+            &copy; 2026 MTs Muhammadiyah Martapura. All Rights Reserved.
         </div>
     </footer>
 
-    <!-- JAVASCRIPT UNTUK MOBILE MENU -->
+    <!-- JAVASCRIPT: LOGIKA ANIMASI & MOBILE MENU -->
     <script>
-        // Logika Hamburger Menu
+        // Logika Animasi Angka Bergulir (Counter Up)
+        const counterElement = document.getElementById('jumlah-siswa');
+        const targetNumber = parseInt(counterElement.getAttribute('data-target'));
+        const animationDuration = 2000; // Durasi animasi 2 detik (2000ms)
+        const frameRate = 20; // Update setiap 20 milidetik
+        const totalFrames = animationDuration / frameRate;
+        const incrementPerFrame = targetNumber / totalFrames;
+        
+        let currentNumber = 0;
+
+        const counterInterval = setInterval(() => {
+            currentNumber += incrementPerFrame;
+            
+            // Hentikan jika sudah mencapai atau melebihi target
+            if (currentNumber >= targetNumber) {
+                counterElement.innerText = targetNumber;
+                clearInterval(counterInterval);
+            } else {
+                // Tampilkan pembulatan ke atas biar gak ada koma desimal
+                counterElement.innerText = Math.ceil(currentNumber);
+            }
+        }, frameRate);
+
+        // --- Logika Menu Mobile (Standard) ---
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const navMenu = document.getElementById('nav-menu');
 
@@ -258,19 +225,15 @@
             hamburgerBtn.innerText = navMenu.classList.contains('active') ? '✕' : '☰';
         });
 
-        // Logika Dropdown untuk Mobile
         const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-        
         dropdownToggles.forEach(toggle => {
             toggle.addEventListener('click', (e) => {
                 if (window.innerWidth <= 992) {
-                    e.preventDefault(); // Mencegah pindah halaman di mobile
+                    e.preventDefault();
                     const parent = toggle.parentElement;
-                    // Tutup dropdown lain yang sedang terbuka
                     document.querySelectorAll('.dropdown').forEach(item => {
                         if (item !== parent) item.classList.remove('mobile-active');
                     });
-                    // Buka/tutup dropdown yang diklik
                     parent.classList.toggle('mobile-active');
                 }
             });
