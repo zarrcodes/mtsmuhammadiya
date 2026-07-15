@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visi dan Misi - MTs Muhammadiyah Martapura</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* === VARIABEL WARNA & RESET === */
+        :root {
+            --biru-muh: #0056b3;
+            --biru-gelap: #003d82;
+            --putih: #ffffff;
+            --abu-terang: #f4f7f6;
+            --abu-teks: #4a5568;
+            --hitam-teks: #1a202c;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--abu-terang); color: var(--abu-teks); line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; color: var(--hitam-teks); }
+        a { text-decoration: none; transition: all 0.3s ease; }
+
+        /* === NAV BAR === */
+        header { background-color: var(--putih); box-shadow: 0 4px 6px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo-area img { width: 50px; height: 50px; object-fit: contain; }
+        .logo-text { font-size: 1.2rem; font-weight: 800; color: var(--biru-muh); line-height: 1.2; text-transform: uppercase; }
+        .logo-text span { display: block; font-size: 0.8rem; color: var(--abu-teks); font-weight: 500; font-family: 'Inter', sans-serif; }
+        .nav-menu { display: flex; gap: 25px; list-style: none; align-items: center; }
+        .nav-menu li { position: relative; }
+        .nav-menu a { color: var(--hitam-teks); font-weight: 600; font-size: 0.9rem; padding: 10px 0; display: inline-block; }
+        .nav-menu a:hover { color: var(--biru-muh); }
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: var(--putih); min-width: 220px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; padding: 10px 0; z-index: 99; }
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown-content a { color: var(--abu-teks); padding: 10px 20px; display: block; font-size: 0.85rem; font-weight: 500; }
+        .dropdown-content a:hover { background-color: var(--abu-terang); color: var(--biru-muh); padding-left: 25px; }
+        .hamburger { display: none; cursor: pointer; border: none; background: transparent; font-size: 24px; color: var(--biru-muh); }
+
+        /* === PAGE HEADER === */
+        .page-header { background: linear-gradient(rgba(0, 86, 179, 0.85), rgba(0, 61, 130, 0.95)), url('assets/sampul.jpg') center/cover; padding: 80px 20px; text-align: center; color: var(--putih); }
+        .page-header h1 { color: var(--putih); font-size: 2.5rem; margin-bottom: 10px; font-weight: 800; }
+        .breadcrumb { font-size: 0.9rem; opacity: 0.8; font-weight: 500; }
+        .breadcrumb a { color: var(--putih); text-decoration: underline; }
+
+        /* === KONTEN VISI MISI === */
+        .content-container { max-width: 900px; margin: 60px auto; padding: 0 20px; }
+        
+        /* Box Visi */
+        .visi-box { background-color: var(--putih); padding: 50px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; margin-bottom: 60px; border-top: 5px solid var(--biru-muh); position: relative; }
+        .visi-box::before { content: '“'; font-family: 'Poppins', sans-serif; font-size: 100px; color: rgba(0, 86, 179, 0.1); position: absolute; top: -10px; left: 50%; transform: translateX(-50%); line-height: 1; }
+        .visi-box h2 { color: var(--biru-muh); font-size: 2rem; margin-bottom: 20px; text-transform: uppercase; position: relative; z-index: 2; }
+        .visi-box p { font-size: 1.2rem; font-weight: 500; color: var(--hitam-teks); line-height: 1.8; position: relative; z-index: 2; }
+
+        /* Box Misi */
+        .misi-box { background-color: var(--putih); padding: 50px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.03); }
+        .misi-box h2 { color: var(--biru-muh); font-size: 2rem; margin-bottom: 30px; text-transform: uppercase; text-align: center; }
+        
+        .misi-list { list-style: none; }
+        .misi-list li { position: relative; padding-left: 50px; margin-bottom: 20px; font-size: 1.05rem; }
+        .misi-list li::before { content: '✓'; position: absolute; left: 0; top: 2px; background: var(--biru-muh); color: var(--putih); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; box-shadow: 0 4px 6px rgba(0, 86, 179, 0.2); }
+
+        /* === FOOTER === */
+        footer { background-color: var(--biru-gelap); color: var(--putih); padding: 60px 20px 20px; margin-top: 60px; }
+        .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h3 { color: var(--putih); margin-bottom: 20px; font-size: 1.2rem; }
+        .footer-col p { opacity: 0.8; font-size: 0.9rem; margin-bottom: 10px; }
+        .footer-col a { color: var(--putih); opacity: 0.8; display: block; margin-bottom: 10px; font-size: 0.9rem; }
+        .footer-col a:hover { opacity: 1; padding-left: 5px; }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; opacity: 0.7; }
+
+        /* === RESPONSIVE MOBILE TWEAKS === */
+        @media (max-width: 992px) {
+            .hamburger { display: block; }
+            .nav-menu { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); background: var(--putih); flex-direction: column; align-items: flex-start; padding: 20px; transition: 0.3s; overflow-y: auto; box-shadow: 0 10px 15px rgba(0,0,0,0.1); gap: 15px; }
+            .nav-menu.active { left: 0; }
+            .nav-menu li { width: 100%; }
+            .nav-menu a { display: block; width: 100%; font-size: 1.1rem; border-bottom: 1px solid var(--abu-terang); padding: 15px 0; }
+            .dropdown-content { position: static; box-shadow: none; display: none; padding-left: 20px; border-left: 2px solid var(--biru-muh); margin-top: 10px; }
+            .dropdown.mobile-active .dropdown-content { display: block; }
+            
+            .page-header { padding: 60px 20px; }
+            .page-header h1 { font-size: 2rem; }
+            .visi-box, .misi-box { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-area">
+                <img src="assets/logo.png" alt="Logo MTs Muhammadiyah Martapura">
+                <div class="logo-text">
+                    MTs Muhammadiyah
+                    <span>Martapura</span>
+                </div>
+            </a>
+            <button class="hamburger" id="hamburger-btn">☰</button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Beranda</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle">Profil ▾</a>
+                    <div class="dropdown-content">
+                        <a href="visi-misi.html">Visi dan Misi</a>
+                        <a href="#">Data Siswa</a>
+                        <a href="#">Tujuan</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle">PPDB ▾</a>
+                    <div class="dropdown-content">
+                        <a href="#">Pendaftaran Online</a>
+                        <a href="#">Pendaftaran Offline</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle">Tenaga Pendidik ▾</a>
+                    <div class="dropdown-content">
+                        <a href="#">Struktur Organisasi</a>
+                        <a href="#">Pendidik</a>
+                        <a href="#">Tenaga Kependidikan</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle">Sarana Prasarana ▾</a>
+                    <div class="dropdown-content">
+                        <a href="#">Ruang Kelas</a>
+                        <a href="#">Perpustakaan</a>
+                        <a href="#">Laboratorium</a>
+                        <a href="#">Fasilitas Olahraga</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle">Ekstrakurikuler ▾</a>
+                    <div class="dropdown-content">
+                        <a href="#">Hizbul Wathan (HW)</a>
+                        <a href="#">Tapak Suci</a>
+                        <a href="#">Futsal</a>
+                        <a href="#">Paskibra</a>
+                        <a href="#">Kesenian</a>
+                    </div>
+                </li>
+                <li><a href="#">Tentang Kami</a></li>
+                <li><a href="#">Artikel</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h1>Visi dan Misi</h1>
+        <div class="breadcrumb">
+            <a href="index.html">Beranda</a> &nbsp;/&nbsp; Profil &nbsp;/&nbsp; Visi dan Misi
+        </div>
+    </div>
+
+    <main class="content-container">
+        
+        <div class="visi-box">
+            <h2>Visi Sekolah</h2>
+            <p>"Terwujudnya generasi Islam yang Sebenar-benarnya, berkarakter, berakhlak mulia, unggul dalam iptek, kreatif dan peduli lingkungan."</p>
+        </div>
+
+        <div class="misi-box">
+            <h2>Misi Sekolah</h2>
+            <ul class="misi-list">
+                <li>Mendidik peserta didik beraqidah kuat, rajin beribadah dan fasih membaca Al Quran</li>
+                <li>Membentuk peserta didik yang berakhlakul karimah</li>
+                <li>Mendidik peserta didik memiliki kemampuan iptek, bahasa dan olahraga</li>
+                <li>Memiliki prestasi akademik dan non akademik</li>
+                <li>Mendidik siswa untuk cinta kebersihan, keindahan, kesehatan, kedisiplinan dan kejujuran</li>
+            </ul>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>MTs Muhammadiyah Martapura</h3>
+                <p>Jln. Belahan Rt.05 Kel. Pasayangan,<br>Martapura, Kalimantan Selatan, 71213</p>
+                <p>Email: info@mtsmuhmartapura.sch.id<br>Telp: (0511) 1234567</p>
+            </div>
+            <div class="footer-col">
+                <h3>Tautan Cepat</h3>
+                <a href="#">Profil Sekolah</a>
+                <a href="#">Pendaftaran PPDB</a>
+                <a href="#">Portal Guru</a>
+                <a href="#">Galeri Kegiatan</a>
+            </div>
+            <div class="footer-col">
+                <h3>Ekstrakurikuler</h3>
+                <a href="#">Hizbul Wathan</a>
+                <a href="#">Tapak Suci</a>
+                <a href="#">Futsal</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 MTs Muhammadiyah Martapura. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburgerBtn.innerText = navMenu.classList.contains('active') ? '✕' : '☰';
+        });
+
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 992) {
+                    e.preventDefault();
+                    const parent = toggle.parentElement;
+                    document.querySelectorAll('.dropdown').forEach(item => {
+                        if (item !== parent) item.classList.remove('mobile-active');
+                    });
+                    parent.classList.toggle('mobile-active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
